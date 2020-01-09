@@ -1,0 +1,46 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<h1 class="posttile loader">{{post.title}}</h1>
+{% if post.published_date %}
+<div class="date postdate">
+  {{post.published_date}}
+</div>
+{% else %}
+<a href="{% url 'blog:post_publish' pk=post.pk %}">Publish</a>
+{% endif %}
+<p class='postcontent'>{{post.text|safe|linebreaksbr}}</p>
+
+{% if user.is_authenticated %}
+<a href="{% url 'blog:post_edit' pk=post.pk %}">
+<span class="fa fa-pencil">Edit</span>
+</a>
+<a href="{% url 'blog:post_remove' pk=post.pk %}">
+<span class="fa fa-remove">Remove</span>
+</a>
+{% endif %}
+<hr>
+
+<a class="btn btn-primary btn-comment" href="{% url 'blog:add_comment_to_post' pk=post.pk%}">Add comment</a>
+
+<div class="container">
+  {% for comment in post.comments.all%}
+    <br>
+    {% if user.is_authenticated or commnet.approved_comment %}
+    {{ comment.created_date }}
+    {% if not comment.approved_comment %}
+    <a href="{% url 'blog:commnet_remove' pk=comment.pk %}">
+    <span class="fa fa-remove">Remove</span>
+    </a>
+    <a href="{% url 'blog:commnet_approve' pk=comment.pk %}">
+    <span class="fa fa-check">Approve</span>
+    </a>
+    {% endif %}
+    <p>{{comment.text|safe|linebreaksbr}}</p>
+    <p>Posted By: {{comment.author}}</p>
+    {% endif %}
+    {% empty %}
+    <p>No Comments!</p>
+  {% endfor %}
+
+</div>
+{% endblock %}
