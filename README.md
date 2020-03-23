@@ -10,7 +10,7 @@
 
 # Usage
 
-* Sqlit Database
+* Sqlite Database
 * Django 
 * Class based views
 
