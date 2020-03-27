@@ -20,4 +20,4 @@ blog porject home view.
 ![Project Home view](images/blog_home.png)
 
 blog project create blog view.
-![Project create blog view](https://github.com/Rabbi50/DjangoBlogProject/tree/master/images/blog_post.png)
+![Project create blog view](images/blog_post.png)
