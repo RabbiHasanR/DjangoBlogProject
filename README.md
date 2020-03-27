@@ -16,8 +16,10 @@
 
 # Project Image
 
-blog porject home view.
+##blog porject home view.
+
 ![Project Home view](images/blog_home.png)
 
-blog project create blog view.
+##blog project create blog view.
+
 ![Project create blog view](images/blog_post.png)
